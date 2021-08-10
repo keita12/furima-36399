@@ -1,20 +1,20 @@
 ## users　テーブル
 
-| Column              | Type   | Options      |
-|---------------------|------- |--------------|
-| nickname            | string | null: false  |
-| email               | string | unique: true |
-| encrypted_password  | string | null: false  |
-| first name          | string | null: false  |
-| last name           | string | null: false  |
-| katakana first name | string | null: false  |
-| katakana last name  | string | null: false  |
-| birthday            | date   | null: false  |
+| Column              | Type   | Options                  |
+|---------------------|------- |--------------------------|
+| nickname            | string | null: false              |
+| email               | string | null: false,unique: true |
+| encrypted_password  | string | null: false              |
+| first_name          | string | null: false              |
+| last_name           | string | null: false              |
+| katakana first_name | string | null: false              |
+| katakana last_name  | string | null: false              |
+| birthday            | date   | null: false              |
 
 has_many :items
 has_many :records
 
-## itens テーブル
+## items テーブル
 | Column          | Type       | Options           |
 |-----------------|----------- |-------------------|
 | item_name       | string     | null: false       |
@@ -24,13 +24,13 @@ has_many :records
 | condition_id    | integer    | null: false       |
 | delivery fee_id | integer    | null: false       |
 | area_id         | integer    | null: false       |
-| shipping_day    | integer    | null: false       |
+| shipping_day_id | integer    | null: false       |
 | price           | integer    | null: false       |
 
 belongs_to :user
 has_one :record
 
-## record テーブル
+## records テーブル
 | Column      | Type       | Options           |
 |-------------|----------- |-------------------|
 | user        | references | foreign_key: true |
@@ -41,14 +41,15 @@ belongs_to :item
 has_one :shipping information
 
 ## shipping information テーブル
-| Column         | Type       | Options     |
-|----------------|----------- |-------------|
-| telephone num  | string     | null: false |
-| postal code    | string     | null: false |
-| area_id        | integer    | null: false |
-| municipalities | string     | null: false |
-| address        | string     | null: false |
-| building name  | string     |             |
+| Column         | Type       | Options           |
+|----------------|----------- |-------------------|
+| telephone num  | string     | null: false       |
+| postal code    | string     | null: false       |
+| area_id        | integer    | null: false       |
+| municipalities | string     | null: false       |
+| address        | string     | null: false       |
+| building name  | string     |                   |
+| record         | references | foreign_key: true |
 
 
 belongs_to :record
