@@ -7,36 +7,7 @@ RSpec.describe User, type: :model do
 
   describe "ユーザー新規登録" do
     context '新規登録に成功する時' do
-      it "ニックネームと生年月日が存在すれば保存できる" do
-        expect(@user).to be_valid
-      end
-      it "被っていないメールアドレスなら保存できる" do
-        ＠user.email = FactoryBot.build(:user)
-        expect(@user).to be_valid
-      end
-      it "パスワードが半角英数字６文字以上であれば保存できる" do
-        @uesr.password = 'keita323'
-        expect(@user).to be_valid
-      end
-      it "パスワードとパスワード確認が同じだと保存できる" do
-        @uesr.password = 'keita323'
-        @user.password_confirmation = 'keita323'
-        expect(@user).to be_valid
-      end
-      it "名前が全角の時保存できる" do
-        @uesr.first_name ='啓太'
-        expect(@user).to be_valid
-      end
-      it "名字が全角の時保存できる" do
-        @uesr.last_name = '稲森'
-        expect(@user).to be_valid
-      end
-      it "名前がカタカナの時保存できる" do
-        @uesr.katakana_first_name = 'ケイタ'
-        expect(@user).to be_valid
-      end
-      it "名字がカタカナの時保存できる" do
-        @uesr.katakana_last_name = 'イナモリ'
+      it "内容に問題なければ保存できる" do
         expect(@user).to be_valid
       end
     end
