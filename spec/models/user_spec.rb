@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
   end
-
+context '新規登録に失敗する時' do
   describe "ユーザー新規登録" do
     it "ニックネームは空では保存できない" do
       @user.nickname = ''
@@ -47,17 +47,17 @@ RSpec.describe User, type: :model do
     it "パスワードは半角英数字混合でないと保存できない" do
       @user.password = 'kkkkkk'
       @user.valid?
-      expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password", "Password is invalid. Input full-width characters."
+      expect(@user.errors.full_messages).to include "Password is invalid. Input full-width characters."
     end
     it "パスワードが半角数字のみでは登録できないこと" do
       @user.password = '777777'
       @user.valid?
-      expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password", "Password is invalid. Input full-width characters."
+      expect(@user.errors.full_messages).to include "Password is invalid. Input full-width characters."
     end
     it "パスワードが全角では登録できないこと" do
       @user.password = 'ああああああ'
       @user.valid?
-      expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password", "Password is invalid. Input full-width characters."
+      expect(@user.errors.full_messages).to include "Password is invalid. Input full-width characters."
     end
     it "パスワードとパスワード確認は値が一致していないと保存できない" do
       @user.password = 'kkkk00'
@@ -111,5 +111,6 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include "Birthday can't be blank"
     end
-  end  
+  end 
+end 
 end
