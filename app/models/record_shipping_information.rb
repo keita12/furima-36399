@@ -1,6 +1,6 @@
 class RecordShippingInformation
 	include ActiveModel::Model
-	attr_accessor :telephone_num,:postal_code,:area_id,:municipalities,:address,:building_name,:record,:user_id,:item_id,:token
+	attr_accessor :telephone_num,:postal_code,:area_id,:municipalities,:address,:building_name,:user_id,:item_id,:token
 
 	with_options presence: true do
 		validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Enter it as follows (e.g. 123-4567)"}
