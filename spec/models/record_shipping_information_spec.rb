@@ -75,6 +75,16 @@ RSpec.describe RecordShippingInformation, type: :model do
       @record_shipping_information.valid?
       expect(@record_shipping_information.errors.full_messages).to include "Token can't be blank"
     end
+    it "user_id空では登録できないこと" do
+      @record_shipping_information.user_id = nil
+      @record_shipping_information.valid?
+      expect(@record_shipping_information.errors.full_messages).to include "User can't be blank"
+    end
+    it "item_id空では登録できないこと" do
+      @record_shipping_information.item_id = nil
+      @record_shipping_information.valid?
+      expect(@record_shipping_information.errors.full_messages).to include "Item can't be blank"
+    end
   end
 end
 
