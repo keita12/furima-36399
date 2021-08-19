@@ -33,17 +33,13 @@ class OrdersController < ApplicationController
       )
 	end
   def login_record
-		if user_signed_in?
 			if @item.record.present?
 				redirect_to root_path
 			end
-		end
 	end
 	def login_same
-		if user_signed_in?
 			if current_user.id == @item.user_id
 				redirect_to root_path
 			end
-		end
 	end
 end
